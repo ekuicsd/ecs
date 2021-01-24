@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.card {
+  box-shadow: 3px 3px 5px #4c586f;
+}
+
+.primaryColor {
+  background: #25484e;
+}
+
+.whiteText,
+.whiteText:hover {
+  color: white;
+}
+
+.form-control {
+  border: 0;
+  border-bottom: 1px solid lightgrey;
+  background: transparent;
+}
+
+.form-control:focus {
+  outline: none !important;
+}
+
+input:focus,
+input.form-control:focus, .btn:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+tr,
+th,
+h6,
+b,
+span,
+h3,
+label,
+p,
+button {
+  font-family: "Kanit";
+}

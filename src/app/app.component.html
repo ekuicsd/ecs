@@ -1,0 +1,12 @@
+<nav class="navbar primaryColor d-block bottomShadow sidePadding">
+  <span [routerLink]="['/']" class="headerFont">Books Store</span>
+  <button [routerLink]="['/orders']" routerLinkActive="router-link-active" type="button"
+    class="btn float-right p-0 m-0 whiteText">
+    Orders
+  </button>
+  <button [routerLink]="['/cart']" routerLinkActive="router-link-active"
+    class="float-right btn my-0 py-0 mx-2 text-center whiteText">
+    Cart
+  </button>
+</nav>
+<router-outlet></router-outlet>

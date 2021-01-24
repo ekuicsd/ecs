@@ -1,0 +1,15 @@
+.headerFont {
+  font-size: 21px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.sidePadding {
+  padding: 8px 50px;
+}
+
+.router-link-active {
+  color:  #66a4af;
+}
+

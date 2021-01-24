@@ -1,0 +1,92 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mt-3">
+            <div class="row">
+                <div class="col-2">
+                    <img class="center" src="assets/images/books.jpg" alt="">
+                </div>
+                <div class="col-10">
+                    <h3 class="blueTextColor mb-5">Buy Books Online</h3>
+                    <div class="row mb-4">
+                        <div class="col-4">
+                            <div class="form-group has-search">
+                                <i class="material-icons form-control-search" style="font-size:24px">search</i>
+                                <input type="text" [(ngModel)]="searchByName" class="form-control search-class"
+                                    placeholder="Search Books">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input (change)="addToComponents($event)" value="bookID" type="checkbox" class="checker"
+                                [checked]="ifExists('bookID')"> <span>BookID</span>
+                            <input (change)="addToComponents($event)" value="title" type="checkbox" class="checker"
+                                [checked]="ifExists('title')"> <span>Title</span>
+                            <input (change)="addToComponents($event)" value="authors" type="checkbox" class="checker"
+                                [checked]="ifExists('authors')"> <span>Authors</span>
+                            <input (change)="addToComponents($event)" value="average_rating" type="checkbox"
+                                class="checker" [checked]="ifExists('average_rating')"> <span>Average Rating</span>
+                            <input (change)="addToComponents($event)" value="language_code" type="checkbox"
+                                class="checker" [checked]="ifExists('language_code')"> <span>Language Code</span>
+                            <input (change)="addToComponents($event)" value="isbn" type="checkbox" class="checker"
+                                [checked]="ifExists('isbn')"> <span>ISBN</span>
+                            <input (change)="addToComponents($event)" value="price" type="checkbox" class="checker"
+                                [checked]="ifExists('price')"> <span>Price</span>
+                            <input (change)="addToComponents($event)" value="ratings_count" type="checkbox"
+                                class="checker" [checked]="ifExists('ratings_count')"> <span>Ratings Count</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col table-responsive">
+                    <table class="table">
+                        <thead class="thead">
+                            <tr>
+                                <th *ngIf="_apiService.columns.indexOf('bookID') >= 0" scope="col">ID</th>
+                                <th *ngIf="_apiService.columns.indexOf('title') >= 0" scope="col">TITLE</th>
+                                <th *ngIf="_apiService.columns.indexOf('authors') >= 0" scope="col">AUTHOR</th>
+                                <th *ngIf="_apiService.columns.indexOf('average_rating') >= 0" scope="col">RATING</th>
+                                <th *ngIf="_apiService.columns.indexOf('language_code') >= 0" scope="col">LANG CODE
+                                </th>
+                                <th *ngIf="_apiService.columns.indexOf('isbn') >= 0" scope="col">ISBN</th>
+                                <th *ngIf="_apiService.columns.indexOf('price') >= 0" scope="col">PRICE</th>
+                                <th *ngIf="_apiService.columns.indexOf('ratings_count') >= 0" scope="col">RATINGS COUNT
+                                </th>
+                                <th scope="col">ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let item of booksList | search : searchByName | slice: (page-1) * pageSize : page * pageSize">
+                                <th *ngIf="_apiService.columns.indexOf('bookID')  >= 0" scope="row">{{item.bookID}}</th>
+                                <td *ngIf="_apiService.columns.indexOf('title') >= 0" class="text-left">{{item.title}}
+                                </td>
+                                <td *ngIf="_apiService.columns.indexOf('authors') >= 0" class="text-left">
+                                    {{item.authors}}</td>
+                                <td *ngIf="_apiService.columns.indexOf('average_rating') >= 0">
+                                    <ngb-rating [(rate)]="item.average_rating" [starTemplate]="t" [readonly]="true"
+                                        [max]="5"></ngb-rating>
+                                </td>
+                                <td *ngIf="_apiService.columns.indexOf('language_code') >= 0" class="text-muted">
+                                    {{item.language_code}}</td>
+                                <td *ngIf="_apiService.columns.indexOf('isbn') >= 0" class="text-muted">{{item.isbn}}
+                                </td>
+                                <td *ngIf="_apiService.columns.indexOf('price') >= 0">Rs.{{item.price}}/-</td>
+                                <td *ngIf="_apiService.columns.indexOf('ratings_count') >= 0" class="text-muted">
+                                    {{item.ratings_count}}</td>
+                                <td>
+                                    <button type="button" style="width: 100px" [disabled]="alreadyAddedToCart(item)"
+                                        (click)="addToCart(item)" class="btn primaryColor whiteText btn-sm px-0">Add to
+                                        Cart</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <ngb-pagination class="d-flex justify-content-end" [(page)]="page" [pageSize]="pageSize"
+                        [collectionSize]="booksList.length"></ngb-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

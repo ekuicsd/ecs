@@ -1,0 +1,42 @@
+.center {
+  height: 200px;
+  width: 100%;
+}
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-search {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+
+.table .thead th {
+  border: 10px solid white;
+  background: #25484e;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  padding: 6px;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid lightgray;
+  text-align: center;
+  font-size: 14px;
+}
+
+input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  margin-left: 30px;
+  margin-right: 8px;
+}

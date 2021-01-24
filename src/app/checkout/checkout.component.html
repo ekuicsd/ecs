@@ -1,0 +1,86 @@
+<div class="container-fluid mt-4" style="padding: 0 100px;">
+    <div class="row">
+        <div class="col-8">
+            <form [formGroup]="checkoutForm" class="card" autocomplete="off">
+                <div class="row card-body">
+                    <div class="col-6">
+                        <h4>Billing Address</h4>
+                        <hr>
+                        <label for="fname">Full Name</label>
+                        <input class="form-control mb-3" type="text" id="fname" formControlName="fullName"
+                            placeholder="Enter full name">
+                        <label for="email">Email</label>
+                        <input class="form-control mb-3" type="email" id="email" formControlName="email"
+                            placeholder="Enter email">
+                        <label for="adr">Address</label>
+                        <input class="form-control mb-3" type="text" id="adr" formControlName="address"
+                            placeholder="Enter address">
+                        <label for="city">City</label>
+                        <input class="form-control mb-3" type="text" id="city" formControlName="city"
+                            placeholder="Enter city">
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="state">State</label>
+                                <input class="form-control mb-3" type="text" id="state" formControlName="state"
+                                    placeholder="Enter state">
+                            </div>
+                            <div class="col">
+                                <label for="zip">Zip</label>
+                                <input class="form-control mb-3" type="number" id="zip" formControlName="zip"
+                                    placeholder="Enter zip">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <h4>Payment</h4>
+                        <hr>
+                        <label for="cname">Name on Card</label>
+                        <input class="form-control mb-3" type="text" id="cname" formControlName="cardName"
+                            placeholder="Enter card holder name">
+                        <label for="ccnum">Credit card number</label>
+                        <input class="form-control mb-3" type="number" id="ccnum" formControlName="cardNumber"
+                            placeholder="Enter card number">
+                        <label for="expmonth">Exp Month</label>
+                        <input class="form-control mb-3" type="number" id="expmonth" formControlName="expMonth"
+                            placeholder="Enter expiry month">
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="expyear">Exp Year</label>
+                                <input class="form-control mb-3" type="number" id="expyear" formControlName="expYear"
+                                    placeholder="Enter expiry year">
+                            </div>
+                            <div class="col">
+                                <label for="cvv">CVV</label>
+                                <input class="form-control mb-3" type="number" id="cvv" formControlName="cvv"
+                                    placeholder="Enter CVV">
+                            </div>
+                        </div>
+                        <button [disabled]="checkoutForm.invalid" class="btn primaryColor whiteText float-right mt-4"
+                            (click)="placeOrder()">Place Order</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Cart
+                        <span class="float-right">{{cartList.length}}</span>
+                    </h5>
+                    <hr>
+                    <p *ngFor="let item of cartList; let i = index">
+                        {{i+1}}. {{item.title}}
+                        <span class="price">Rs.{{item.price}}</span>
+                    </p>
+                    <hr>
+                    <h6>
+                        Total
+                        <span class="float-right">Rs.{{amount}}/-</span>
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
